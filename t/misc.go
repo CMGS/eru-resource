@@ -12,8 +12,8 @@ func Name(p plugins.Plugin) {
 	fmt.Println(p.Name())
 }
 
-func GetMetrics(ctx context.Context, p plugins.Plugin) {
-	litter.Dump(p.GetMetrics(ctx, "pod1", "test"))
+func GetMetrics(ctx context.Context, p plugins.Plugin, nodename string) {
+	litter.Dump(p.GetMetrics(ctx, "pod1", nodename))
 }
 
 func GetMetricsDescription(ctx context.Context, p plugins.Plugin) {

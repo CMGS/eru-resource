@@ -33,10 +33,15 @@ func main() {
 		panic(err)
 	}
 
-	t.Name(cm)
-	t.GetMetrics(ctx, cm)
+	//t.Name(cm)
 	//t.GetMetricsDescription(ctx, cm)
-	//t.AddNode(ctx, cm)
+	t.AddNode(ctx, cm, "test1")
+	t.AddNode(ctx, cm, "test2")
+	t.GetMetrics(ctx, cm, "test1")
+	t.GetMetrics(ctx, cm, "test2")
+	t.GetDeployCapacity(ctx, cm, []string{"test1", "test2"})
+	t.RemoveNode(ctx, cm, "test1")
+	t.RemoveNode(ctx, cm, "test2")
 }
 
 func etcd() *integration.ClusterV3 {
