@@ -13,7 +13,7 @@ func Name(p plugins.Plugin) {
 }
 
 func GetMetrics(ctx context.Context, p plugins.Plugin) {
-	fmt.Println(p.GetMetrics(ctx, "pod1", "node1"))
+	litter.Dump(p.GetMetrics(ctx, "pod1", "test"))
 }
 
 func GetMetricsDescription(ctx context.Context, p plugins.Plugin) {

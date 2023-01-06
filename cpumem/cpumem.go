@@ -35,7 +35,8 @@ func main() {
 
 	t.Name(cm)
 	t.GetMetrics(ctx, cm)
-	t.GetMetricsDescription(ctx, cm)
+	//t.GetMetricsDescription(ctx, cm)
+	//t.AddNode(ctx, cm)
 }
 
 func etcd() *integration.ClusterV3 {
