@@ -36,7 +36,7 @@ func RemoveNode(ctx context.Context, p plugins.Plugin, nodename string) {
 	litter.Dump(r)
 }
 
-func GetDeployCapacity(ctx context.Context, p plugins.Plugin, nodenames []string) {
+func GetNodesDeployCapacity(ctx context.Context, p plugins.Plugin, nodenames []string) {
 	//GetNodesDeployCapacity(ctx context.Context, nodenames []string, resource *plugintypes.WorkloadResource) (*plugintypes.GetNodesDeployCapacityResponse, error)
 	req := &plugintypes.WorkloadResource{
 		"keep-cpu-bind":  true,
@@ -47,6 +47,46 @@ func GetDeployCapacity(ctx context.Context, p plugins.Plugin, nodenames []string
 		"memory-limit":   100,
 	}
 	r, err := p.GetNodesDeployCapacity(ctx, nodenames, req)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}
+
+func SetNodeResourceCapacity(ctx context.Context, p plugins.Plugin, nodename string) {
+	//SetNodeResourceCapacity(ctx context.Context, nodename string, resource *plugintypes.NodeResource, resourceRequest *plugintypes.NodeResourceRequest, delta bool, incr bool) (*plugintypes.SetNodeResourceCapacityResponse, error)
+	//	resourceReq := &plugintypes.NodeResourceRequest{
+	//		//"cpu":    "1:50,2:50",
+	//		"memory": "2gb",
+	//	}
+
+	resource := &plugintypes.NodeResource{
+		"cpu": 4.0,
+		"cpu_map": map[string]int64{
+			"1": 50,
+			"0": 100,
+		},
+		"memory": 102400,
+	}
+
+	r, err := p.SetNodeResourceCapacity(ctx, nodename, resource, nil, true, true)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}
+
+func GetNodeResourceInfo(ctx context.Context, p plugins.Plugin, nodename string) {
+	//GetNodeResourceInfo(ctx context.Context, nodename string, workloadsResource []*plugintypes.WorkloadResource) (*plugintypes.GetNodeResourceInfoResponse, error)
+	req := []*plugintypes.WorkloadResource{
+		{
+			"cpu_request":    0.5, // TODO maybe not _
+			"cpu_limit":      1,
+			"memory_request": 100,
+			"memory_limit":   100,
+		},
+	}
+	r, err := p.GetNodeResourceInfo(ctx, nodename, req)
 	if err != nil {
 		panic(err)
 	}
