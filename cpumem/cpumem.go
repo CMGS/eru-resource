@@ -46,8 +46,10 @@ func main() {
 	//t.GetNodeResourceInfo(ctx, cm, "test1")
 	//t.SetNodeResourceUsage(ctx, cm, "test1")
 	//t.GetMostIdleNode(ctx, cm, []string{"test1", "test2"})
-	t.FixNodeResource(ctx, cm, "test1")
-	t.GetNodeResourceInfo(ctx, cm, "test1")
+	//t.FixNodeResource(ctx, cm, "test1")
+	//t.GetNodeResourceInfo(ctx, cm, "test1")
+	//t.CalculateDeploy(ctx, cm, "test1")
+	t.CalculateRealloc(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test2")
 }
