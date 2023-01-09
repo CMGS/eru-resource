@@ -28,7 +28,7 @@ func main() {
 		},
 	}
 
-	cm, err := cpumem.NewPlugin(ctx, config)
+	cm, err := cpumem.NewPlugin(ctx, config, nil)
 	if err != nil {
 		panic(err)
 	}
