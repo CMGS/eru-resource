@@ -37,8 +37,8 @@ func RemoveNode(ctx context.Context, p plugins.Plugin, nodename string) {
 }
 
 func GetNodesDeployCapacity(ctx context.Context, p plugins.Plugin, nodenames []string) {
-	//GetNodesDeployCapacity(ctx context.Context, nodenames []string, resource *plugintypes.WorkloadResource) (*plugintypes.GetNodesDeployCapacityResponse, error)
-	req := &plugintypes.WorkloadResource{
+	//GetNodesDeployCapacity(ctx context.Context, nodenames []string, resource *plugintypes.WorkloadResourceRequest) (*plugintypes.GetNodesDeployCapacityResponse, error)
+	req := &plugintypes.WorkloadResourceRequest{
 		"keep-cpu-bind":  true,
 		"cpu-bind":       false,
 		"cpu-request":    0.5,
@@ -119,15 +119,46 @@ func SetNodeResourceUsage(ctx context.Context, p plugins.Plugin, nodename string
 	//		"memory": "2gb",
 	//	}
 
-	resource := &plugintypes.NodeResource{
-		"cpu": 4.0,
-		"cpu_map": map[string]int64{
-			"1": 50,
-			"0": 100,
-		},
-		"memory": 102400,
+	//resource := &plugintypes.NodeResource{
+	//	"cpu": 4.0,
+	//	"cpu_map": map[string]int64{
+	//		"1": 50,
+	//		"0": 100,
+	//	},
+	//	"memory": 102400,
+	//}
+
+	workloadResourcs := []*plugintypes.WorkloadResource{
+		{"cpu_request": 1.0},
+		{"cpu_request": 1.0},
 	}
-	r, err := p.SetNodeResourceUsage(ctx, nodename, resource, nil, nil, true, true)
+
+	r, err := p.SetNodeResourceUsage(ctx, nodename, nil, nil, workloadResourcs, true, true)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}
+
+func GetMostIdleNode(ctx context.Context, p plugins.Plugin, nodenames []string) {
+	r, err := p.GetMostIdleNode(ctx, nodenames)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}
+
+func FixNodeResource(ctx context.Context, p plugins.Plugin, nodename string) {
+	//FixNodeResource(ctx context.Context, nodename string, workloadsResource []*plugintypes.WorkloadResource) (*plugintypes.GetNodeResourceInfoResponse, error)
+	req := []*plugintypes.WorkloadResource{
+		{
+			"cpu_request":    0.5,
+			"cpu_limit":      1,
+			"memory_request": 100,
+			"memory_limit":   100,
+		},
+	}
+	r, err := p.FixNodeResource(ctx, nodename, req)
 	if err != nil {
 		panic(err)
 	}
