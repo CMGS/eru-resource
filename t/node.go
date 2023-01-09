@@ -92,3 +92,23 @@ func GetNodeResourceInfo(ctx context.Context, p plugins.Plugin, nodename string)
 	}
 	litter.Dump(r)
 }
+
+func SetNodeResourceInfo(ctx context.Context, p plugins.Plugin, nodename string) {
+	//SetNodeResourceInfo(ctx context.Context, nodename string, capacity *plugintypes.NodeResource, usage *plugintypes.NodeResource) (*plugintypes.SetNodeResourceInfoResponse, error)
+	cap := &plugintypes.NodeResource{
+		"cpu": 4.0,
+		"cpu_map": map[string]int64{
+			"1": 50,
+			"0": 100,
+			"2": 40,
+			"3": 60,
+		},
+		"memory": 102400,
+	}
+	usage := &plugintypes.NodeResource{}
+	r, err := p.SetNodeResourceInfo(ctx, nodename, cap, usage)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}

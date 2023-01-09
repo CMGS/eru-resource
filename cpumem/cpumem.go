@@ -41,7 +41,9 @@ func main() {
 	//t.GetMetrics(ctx, cm, "test2")
 	//t.GetNodesDeployCapacity(ctx, cm, []string{"test1", "test2"})
 	//t.GetNodeResourceInfo(ctx, cm, "test1")
-	t.SetNodeResourceCapacity(ctx, cm, "test1")
+	//t.SetNodeResourceCapacity(ctx, cm, "test1")
+	//t.SetNodeResourceInfo(ctx, cm, "test1")
+	//t.GetNodeResourceInfo(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test2")
 }
