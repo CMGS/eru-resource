@@ -44,6 +44,7 @@ func main() {
 	//t.SetNodeResourceCapacity(ctx, cm, "test1")
 	//t.SetNodeResourceInfo(ctx, cm, "test1")
 	//t.GetNodeResourceInfo(ctx, cm, "test1")
+	t.SetNodeResourceUsage(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test2")
 }
