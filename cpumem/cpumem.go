@@ -49,7 +49,8 @@ func main() {
 	//t.FixNodeResource(ctx, cm, "test1")
 	//t.GetNodeResourceInfo(ctx, cm, "test1")
 	//t.CalculateDeploy(ctx, cm, "test1")
-	t.CalculateRealloc(ctx, cm, "test1")
+	//t.CalculateRealloc(ctx, cm, "test1")
+	t.CalculateRemap(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test1")
 	t.RemoveNode(ctx, cm, "test2")
 }

@@ -44,5 +44,21 @@ func CalculateRealloc(ctx context.Context, p plugins.Plugin, nodename string) {
 	litter.Dump(r)
 }
 
-func CalculateRemap(ctx context.Context, p plugins.Plugin) {
+func CalculateRemap(ctx context.Context, p plugins.Plugin, nodename string) {
+	req := map[string]*plugintypes.WorkloadResource{
+		"ID1": {
+			"cpu_request": 0.1,
+			"cpu_limit":   0.2,
+			"cpu_map":     map[string]int64{"1": 20},
+		},
+		"ID2": {
+			"cpu_request": 0.1,
+			"cpu_limit":   0.2,
+		},
+	}
+	r, err := p.CalculateRemap(ctx, nodename, req)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
 }
