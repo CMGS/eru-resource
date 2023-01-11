@@ -1,0 +1,8 @@
+#! /bin/bash
+#echo $(</dev/stdin)
+#echo $@
+#$(go run /Users/cmgs/.go/src/github/projecteru2/resource-storage/storage.go --config dev.yaml get-metrics)
+#cd /Users/cmgs/.go/src/github/projecteru2/resource-storage
+#go run storage.go --config dev.yaml get-metrics </dev/stdin
+#cd -
+/Users/cmgs/.go/src/github/projecteru2/resource-storage/tmp $@
