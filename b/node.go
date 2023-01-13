@@ -83,3 +83,30 @@ func SetNodeResourceInfo(ctx context.Context, p plugins.Plugin, nodename string)
 	}
 	litter.Dump(r)
 }
+
+func SetNodeResourceUsage(ctx context.Context, p plugins.Plugin, nodename string) {
+	//	resourceReq := &plugintypes.NodeResourceRequest{
+	//		//"cpu":    "1:50,2:50",
+	//		"memory": "2gb",
+	//	}
+
+	//resource := &plugintypes.NodeResource{
+	//	"cpu": 4.0,
+	//	"cpu_map": map[string]int64{
+	//		"1": 50,
+	//		"0": 100,
+	//	},
+	//	"memory": 102400,
+	//}
+
+	workloadResourcs := []*plugintypes.WorkloadResource{
+		{"storage_request": 10},
+		{"storage_request": 10},
+	}
+
+	r, err := p.SetNodeResourceUsage(ctx, nodename, nil, nil, workloadResourcs, true, true)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}

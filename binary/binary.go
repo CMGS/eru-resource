@@ -37,7 +37,9 @@ func main() {
 	//
 	//	b.SetNodeResourceCapacity(ctx, bi, "test")
 	//	b.GetNodesDeployCapacity(ctx, bi, []string{"test"})
-	b.GetNodeResourceInfo(ctx, bi, "test")
-	b.SetNodeResourceInfo(ctx, bi, "test")
+	//b.GetNodeResourceInfo(ctx, bi, "test")
+	//b.SetNodeResourceInfo(ctx, bi, "test")
+	//b.GetNodeResourceInfo(ctx, bi, "test")
+	b.SetNodeResourceUsage(ctx, bi, "test")
 	b.GetNodeResourceInfo(ctx, bi, "test")
 }
