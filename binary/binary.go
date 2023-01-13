@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/CMGS/eru-resource/b"
-	"github.com/CMGS/eru-resource/t"
 	"github.com/projecteru2/core/log"
 	"github.com/projecteru2/core/resource3/plugins/binary"
 	coretypes "github.com/projecteru2/core/types"
@@ -30,9 +29,12 @@ func main() {
 
 	//t.Name(bi)
 	//t.GetMetricsDescription(ctx, bi)
-	b.AddNode(ctx, bi, "test")
-	defer t.RemoveNode(ctx, bi, "test")
-	//t.GetMetrics(ctx, bi, "test")
-	b.SetNodeResourceCapacity(ctx, bi, "test")
-	b.GetNodesDeployCapacity(ctx, bi, []string{"test"})
+	//b.AddNode(ctx, bi, "test")
+	//	defer t.RemoveNode(ctx, bi, "test")
+	//
+	// t.GetMetrics(ctx, bi, "test")
+	//
+	//	b.SetNodeResourceCapacity(ctx, bi, "test")
+	//	b.GetNodesDeployCapacity(ctx, bi, []string{"test"})
+	b.GetNodeResourceInfo(ctx, bi, "test")
 }
