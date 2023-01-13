@@ -4,4 +4,4 @@ etcd:
     prefix: "/eru-storage"
 
 scheduler:
-    max_deploy_count: 50
+    max_deploy_count: 10
