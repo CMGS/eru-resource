@@ -68,3 +68,18 @@ func GetNodeResourceInfo(ctx context.Context, p plugins.Plugin, nodename string)
 	}
 	litter.Dump(r)
 }
+
+func SetNodeResourceInfo(ctx context.Context, p plugins.Plugin, nodename string) {
+	//SetNodeResourceInfo(ctx context.Context, nodename string, capacity *plugintypes.NodeResource, usage *plugintypes.NodeResource) (*plugintypes.SetNodeResourceInfoResponse, error)
+	capacity := &plugintypes.NodeResource{
+		"storage": 1024,
+		"volumes": map[string]int64{
+			"/data": 1023, "/data1": 1024, "/data2": 1025,
+		},
+	}
+	r, err := p.SetNodeResourceInfo(ctx, nodename, capacity, nil)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}
