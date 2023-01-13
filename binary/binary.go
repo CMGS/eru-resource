@@ -43,6 +43,9 @@ func main() {
 	//b.SetNodeResourceUsage(ctx, bi, "test")
 	//b.GetNodeResourceInfo(ctx, bi, "test")
 	//t.GetMostIdleNode(ctx, bi, []string{"t1", "t2"})
-	b.FixNodeResource(ctx, bi, "test")
-	b.GetNodeResourceInfo(ctx, bi, "test")
+	//b.FixNodeResource(ctx, bi, "test")
+	//b.GetNodeResourceInfo(ctx, bi, "test")
+	b.CalculateDeploy(ctx, bi, "test")
+	b.CalculateRealloc(ctx, bi, "test")
+	b.CalculateRemap(ctx, bi, "test")
 }
