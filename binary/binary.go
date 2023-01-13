@@ -42,5 +42,7 @@ func main() {
 	//b.GetNodeResourceInfo(ctx, bi, "test")
 	//b.SetNodeResourceUsage(ctx, bi, "test")
 	//b.GetNodeResourceInfo(ctx, bi, "test")
-	t.GetMostIdleNode(ctx, bi, []string{"t1", "t2"})
+	//t.GetMostIdleNode(ctx, bi, []string{"t1", "t2"})
+	b.FixNodeResource(ctx, bi, "test")
+	b.GetNodeResourceInfo(ctx, bi, "test")
 }

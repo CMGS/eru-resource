@@ -110,3 +110,18 @@ func SetNodeResourceUsage(ctx context.Context, p plugins.Plugin, nodename string
 	}
 	litter.Dump(r)
 }
+
+func FixNodeResource(ctx context.Context, p plugins.Plugin, nodename string) {
+	//GetNodeResourceInfo(ctx context.Context, nodename string, workloadsResource []*plugintypes.WorkloadResource) (*plugintypes.GetNodeResourceInfoResponse, error)
+	req := []*plugintypes.WorkloadResource{
+		{
+			"storage_request": 1,
+			"storage_limit":   1,
+		},
+	}
+	r, err := p.FixNodeResource(ctx, nodename, req)
+	if err != nil {
+		panic(err)
+	}
+	litter.Dump(r)
+}
